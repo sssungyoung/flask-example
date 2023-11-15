@@ -3,7 +3,7 @@ node {
          checkout scm
      }
      stage('Build image') {
-         app = docker.build("181530151294.dkr.ecr.ap-northeast-2.amazonaws.com/ssung-test", "--network host .")
+         app = docker.build("181530151294.dkr.ecr.ap-northeast-2.amazonaws.com/ssung-test")
          
      }
      stage('Push image') {

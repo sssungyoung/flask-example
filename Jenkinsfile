@@ -12,7 +12,6 @@ node {
              app.push("latest")
          }
      }
-
      stage('K8S Manifest Update') {
         steps {
             git credentialsId: 'gitops_token',
@@ -22,7 +21,7 @@ node {
             sh "sed -i 's/ssung-test:.*\$/ssung-test:${currentBuild.number}/g' flask-example-deploy/deployment.yaml"
             sh "git add deployment.yaml"
             sh "git commit -m '[UPDATE] my-app ${currentBuild.number} image versioning'"
-            sshagent(credentials: ['{k8s-manifest repository credential ID}']) {
+            sshagent(credentials: ['gitops_token']) {
                 sh "git remote set-url origin git@github.com/sssungyoung/flask-example-apps.git"
                 sh "git push -u origin main"
              }

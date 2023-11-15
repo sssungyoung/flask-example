@@ -27,13 +27,5 @@ node {
                 sh "git push -u origin main"
              }
         }
-        post {
-                failure {
-                  echo 'K8S Manifest Update failure !'
-                }
-                success {
-                  echo 'K8S Manifest Update success !'
-                }
-        }
     }
 }

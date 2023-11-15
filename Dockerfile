@@ -10,7 +10,7 @@ RUN apt-get update
 RUN pip install --no-cache-dir -r requirements.txt
 
 # port number
-EXPOSE 80
+EXPOSE 5000
 
 # run command
 CMD ["python", "source/app.py"]
